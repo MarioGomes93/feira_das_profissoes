@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feira das Profissões | Gestão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #floating-logout-button { position: fixed; right: 24px; bottom: 24px; z-index: 20; border: 1px solid #dce5df; border-radius: 7px; background: #fff; color: #205a45; padding: 11px 15px; box-shadow: 0 10px 30px rgba(23,35,30,.12); font-size: 12px; font-weight: 700; }
+    #floating-logout-button:hover { background: #e9f6ee; }
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="auth-view" id="auth-view">
+      <div class="auth-intro">
+        <div class="brand-mark"><span>FP</span><strong>Feira das<br>Profissões</strong></div>
+        <div class="intro-copy">
+          <p class="eyebrow">Central de gestão</p>
+          <h1>Organize o que faz<br>o evento acontecer.</h1>
+          <p class="intro-text">Uma visão clara de pessoas, produtos e operações para sua equipe trabalhar em sintonia.</p>
+        </div>
+        <div class="intro-note"><span class="note-dot"></span><span>Ambiente interno • 2026</span></div>
+      </div>
+      <div class="auth-panel">
+        <div class="mobile-brand brand-mark"><span>FP</span><strong>Feira das Profissões</strong></div>
+        <div class="auth-header"><p class="eyebrow" id="auth-eyebrow">Bem-vindo de volta</p><h2 id="auth-title">Acesse sua conta</h2><p id="auth-subtitle">Entre para acompanhar a operação da feira.</p></div>
+        <div class="auth-tabs" id="auth-tabs"><button class="tab active" data-mode="login">Entrar</button><button class="tab" data-mode="register">Criar conta</button></div>
+        <form id="auth-form" novalidate>
+          <label class="field hidden" id="name-field"><span>Nome completo</span><input id="name" name="name" type="text" placeholder="Como podemos chamar você?"></label>
+          <label class="field"><span>E-mail profissional</span><input id="email" name="email" type="email" placeholder="nome@empresa.com" autocomplete="email" required></label>
+          <label class="field" id="password-field"><span>Senha</span><div class="password-wrap"><input id="password" name="password" type="password" placeholder="Mínimo de 6 caracteres" autocomplete="current-password" required><button type="button" class="password-toggle" aria-label="Mostrar senha">Mostrar</button></div></label>
+          <label class="field hidden" id="token-field"><span>Código de recuperação</span><input id="token" name="token" type="text" placeholder="Cole o código recebido"></label>
+          <div class="form-options" id="login-options"><label class="check"><input type="checkbox"><span>Manter conectado</span></label><button type="button" class="text-button" id="forgot-link">Esqueci minha senha</button></div>
+          <button class="primary-button" type="submit" id="submit-button">Entrar na plataforma <span>→</span></button>
+          <button class="back-button hidden" type="button" id="back-button">← Voltar para o login</button>
+          <p class="form-message" id="form-message" role="alert"></p>
+        </form>
+        <p class="auth-footer">Acesso restrito à equipe organizadora</p>
+      </div>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard-view">
+      <aside class="sidebar"><div class="brand-mark"><span>FP</span><strong>Feira das<br>Profissões</strong></div><div class="side-label">Navegação</div><nav><a class="nav-link active" href="#overview"><span>◈</span> Visão geral</a><a class="nav-link" href="#products"><span>▦</span> Produtos</a><a class="nav-link" href="#people"><span>♧</span> Funcionários</a></nav><div class="sidebar-bottom"><div class="event-status"><span></span><div><strong>Evento ativo</strong><small>12 a 15 de setembro</small></div></div><button class="logout-button" id="logout-button" type="button">Sair e voltar ao login <span>↗</span></button></div></aside>
+      <div class="main-content"><header class="topbar"><div><p class="eyebrow">Quarta-feira, 26 de agosto de 2026</p><h1>Visão geral</h1></div><div class="user-menu"><div class="avatar" id="user-avatar">--</div><div><strong id="user-name">Usuário</strong><small id="user-email">email</small></div><span class="chevron">⌄</span></div></header><div class="content-grid" id="overview"><section class="welcome-banner"><div><p class="eyebrow">Olá, <span id="welcome-name">equipe</span></p><h2>Tudo sob controle.</h2><p>Confira os principais pontos da operação hoje.</p></div><div class="banner-shape">✦</div></section><section class="metrics"><article class="metric-card"><div class="metric-icon green">⌁</div><div><span>Departamentos</span><strong id="department-count">0</strong></div><small>+2 este mês</small></article><article class="metric-card"><div class="metric-icon orange">▦</div><div><span>Produtos ativos</span><strong id="product-count">0</strong></div><small>do catálogo</small></article><article class="metric-card"><div class="metric-icon purple">♧</div><div><span>Funcionários</span><strong id="employee-count">0</strong></div><small>na operação</small></article></section><section class="section-block"><div class="section-heading"><div><p class="eyebrow">Estrutura</p><h2>Departamentos</h2></div><button class="outline-button">Ver todos <span>→</span></button></div><div class="department-grid" id="department-list"></div></section><div class="lower-grid"><section class="section-block" id="products"><div class="section-heading"><div><p class="eyebrow">Inventário</p><h2>Produtos disponíveis</h2></div><button class="icon-button" aria-label="Mais opções">•••</button></div><div class="table-wrap"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Estoque</th><th>Status</th></tr></thead><tbody id="product-list"></tbody></table></div></section><section class="section-block" id="people"><div class="section-heading"><div><p class="eyebrow">Time</p><h2>Funcionários</h2></div><button class="outline-button">Ver equipe <span>→</span></button></div><div class="employee-list" id="employee-list"></div></section></div></div></div>
+    </section>
+  <button id="floating-logout-button" class="hidden" type="button">Sair da conta</button></main>
+  <script src="app.js"></script>
+</body>
+</html>
