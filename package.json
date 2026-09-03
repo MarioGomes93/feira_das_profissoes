@@ -1,9 +1,10 @@
 {
-  "name": "feira_das_profissoes",
+  "homepage": "https://MarioGomes93.github.io/feira_das_profissoes",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
+    "deploy": "gh-pages -d public",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -19,6 +20,7 @@
     "express-session": "^1.19.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "nodemon": "^3.1.14"
   }
 }

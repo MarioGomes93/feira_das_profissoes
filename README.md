@@ -17,6 +17,18 @@ Para desenvolvimento com reinício automático:
 npm run dev
 ```
 
+## Publicar no GitHub Pages
+
+O frontend estático é publicado com:
+
+```bash
+npm run deploy
+```
+
+No repositório do GitHub, abra **Settings > Pages**, selecione **Deploy from a branch**, escolha a branch `gh-pages` e a pasta `/ (root)`. O endereço será `https://MarioGomes93.github.io/feira_das_profissoes/`.
+
+O GitHub Pages não executa o `server.js` nem o SQLite. Por isso, o endereço Pages oferece uma demonstração navegável; para cadastro, login e persistência reais, execute o backend com `npm start` em um servidor Node.
+
 ## Recursos
 
 - Cadastro com validação de e-mail e senha protegida com hash bcrypt.

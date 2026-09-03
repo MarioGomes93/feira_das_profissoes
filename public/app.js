@@ -3,6 +3,27 @@ const dashboardView = document.querySelector('#dashboard-view');
 const authForm = document.querySelector('#auth-form');
 const message = document.querySelector('#form-message');
 const state = { mode: 'login' };
+const isGithubPages = window.location.hostname.endsWith('github.io');
+const staticUser = { id: 1, name: 'Visitante da feira', email: 'visitante@feiradasprofissoes.com' };
+const staticDashboard = {
+  departments: [
+    { id: 1, name: 'Logística', description: 'Fluxo, armazenamento e entrega', color: '#e2f3ec' },
+    { id: 2, name: 'Produtos', description: 'Catálogo e disponibilidade', color: '#fff0d8' },
+    { id: 3, name: 'Pessoas', description: 'Equipe e funções', color: '#e8e8fb' },
+  ],
+  products: [
+    { id: 1, name: 'Kit boas-vindas', category: 'Materiais', stock: 148, status: 'Disponível' },
+    { id: 2, name: 'Crachá visitante', category: 'Identificação', stock: 42, status: 'Estoque baixo' },
+    { id: 3, name: 'Camiseta do evento', category: 'Vestuário', stock: 0, status: 'Esgotado' },
+    { id: 4, name: 'Pasta institucional', category: 'Materiais', stock: 86, status: 'Disponível' },
+  ],
+  employees: [
+    { id: 1, name: 'Marina Costa', role: 'Coordenadora geral', department: 'Operações', initials: 'MC' },
+    { id: 2, name: 'Rafael Lima', role: 'Analista de logística', department: 'Logística', initials: 'RL' },
+    { id: 3, name: 'Bianca Alves', role: 'Especialista de produtos', department: 'Produtos', initials: 'BA' },
+    { id: 4, name: 'João Santos', role: 'Assistente administrativo', department: 'Pessoas', initials: 'JS' },
+  ],
+};
 
 const elements = {
   eyebrow: document.querySelector('#auth-eyebrow'), title: document.querySelector('#auth-title'), subtitle: document.querySelector('#auth-subtitle'),
@@ -44,6 +65,14 @@ document.querySelector('.password-toggle').addEventListener('click', (event) => 
 });
 
 async function request(url, options = {}) {
+  if (isGithubPages) {
+    if (url === '/api/me') return { user: null };
+    if (url === '/api/dashboard') return staticDashboard;
+    if (url === '/api/auth/logout') return { message: 'Sessão encerrada.' };
+    if (url === '/api/auth/forgot-password') return { message: 'Código de demonstração gerado.', devToken: 'DEMO-FEIRA-2026' };
+    if (url === '/api/auth/reset-password') return { message: 'Senha atualizada.' };
+    return { user: staticUser };
+  }
   const response = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...options });
   const data = await response.json();
   if (!response.ok) throw new Error(data.message || 'Não foi possível concluir a ação.');

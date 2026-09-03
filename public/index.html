@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
     #floating-logout-button { position: fixed; right: 24px; bottom: 24px; z-index: 20; border: 1px solid #dce5df; border-radius: 7px; background: #fff; color: #205a45; padding: 11px 15px; box-shadow: 0 10px 30px rgba(23,35,30,.12); font-size: 12px; font-weight: 700; }
     #floating-logout-button:hover { background: #e9f6ee; }
@@ -48,6 +48,6 @@
       <div class="main-content"><header class="topbar"><div><p class="eyebrow">Quarta-feira, 26 de agosto de 2026</p><h1>Visão geral</h1></div><div class="user-menu"><div class="avatar" id="user-avatar">--</div><div><strong id="user-name">Usuário</strong><small id="user-email">email</small></div><span class="chevron">⌄</span></div></header><div class="content-grid" id="overview"><section class="welcome-banner"><div><p class="eyebrow">Olá, <span id="welcome-name">equipe</span></p><h2>Tudo sob controle.</h2><p>Confira os principais pontos da operação hoje.</p></div><div class="banner-shape">✦</div></section><section class="metrics"><article class="metric-card"><div class="metric-icon green">⌁</div><div><span>Departamentos</span><strong id="department-count">0</strong></div><small>+2 este mês</small></article><article class="metric-card"><div class="metric-icon orange">▦</div><div><span>Produtos ativos</span><strong id="product-count">0</strong></div><small>do catálogo</small></article><article class="metric-card"><div class="metric-icon purple">♧</div><div><span>Funcionários</span><strong id="employee-count">0</strong></div><small>na operação</small></article></section><section class="section-block"><div class="section-heading"><div><p class="eyebrow">Estrutura</p><h2>Departamentos</h2></div><button class="outline-button">Ver todos <span>→</span></button></div><div class="department-grid" id="department-list"></div></section><div class="lower-grid"><section class="section-block" id="products"><div class="section-heading"><div><p class="eyebrow">Inventário</p><h2>Produtos disponíveis</h2></div><button class="icon-button" aria-label="Mais opções">•••</button></div><div class="table-wrap"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Estoque</th><th>Status</th></tr></thead><tbody id="product-list"></tbody></table></div></section><section class="section-block" id="people"><div class="section-heading"><div><p class="eyebrow">Time</p><h2>Funcionários</h2></div><button class="outline-button">Ver equipe <span>→</span></button></div><div class="employee-list" id="employee-list"></div></section></div></div></div>
     </section>
   <button id="floating-logout-button" class="hidden" type="button">Sair da conta</button></main>
-  <script src="/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
